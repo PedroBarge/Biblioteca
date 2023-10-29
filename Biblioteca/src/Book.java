@@ -29,7 +29,7 @@ class Book {
             stock--;
             System.out.println("Livro " + title + " emprestado para " + user);
         } else {
-            System.out.println("Estoque do livro " + title + " esgotado.");
+            System.out.println("Stock do livro " + title + " esgotado.");
         }
     }
 
