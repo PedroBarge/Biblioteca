@@ -1,9 +1,8 @@
-import java.util.*;
 import java.util.ArrayList;
 
 class Book {
-    private  String title;
-    private  int stock;
+    private String title;
+    private int stock;
     private ArrayList<String> userWithBook;
 
     public Book(String title, int stock) {

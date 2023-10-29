@@ -1,23 +1,19 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-
 public class BibliotecaApp {
     //------------------------------------------------------------------//
     static Scanner scnInput = new Scanner(System.in);
     //------------------------------------------------------------------//
     static ArrayList<Book> livros = new ArrayList<>();
     static ArrayList<User> utilizadores = new ArrayList<>();
-
     //------------------------------------------------------------------//
     public static void main(String[] args) {
         boolean menuLoop = false;
         //------------------------------------------------------------------//
         String userInput;
         //------------------------------------------------------------------//
-        //Pre add
         livros.add(new Book("Os Lusiadas", 5));
         livros.add(new Book("Los Pollos Locos", 3));
-
         utilizadores.add(new User("Joao", 25));
         utilizadores.add(new User("Maria", 30));
         //------------------------------------------------------------------//
@@ -41,10 +37,8 @@ public class BibliotecaApp {
                         case "4":
                             showBooksArray();
                             break;
-
                     }
                     break;
-
                 case "2":
                     showMenuUsers();
                     userInput = scnInput.next();
@@ -56,11 +50,10 @@ public class BibliotecaApp {
                             showAllUsers();
                             break;
                         case "3":
-                        showAllUsersWithBook();
+                            showAllUsersWithBook();
                             break;
                     }
                     break;
-
                 default:
                     if (userInput.equals("0")) {
                         System.out.println("A fechar ...");
@@ -130,7 +123,8 @@ public class BibliotecaApp {
 
         selectBook.loanBook(utilizadores.get(numUser).getName());
     }
-    public static void returnBook(){
+
+    public static void returnBook() {
         System.out.println("Devolver Livros");
         showAllUsers();
         System.out.println("Inserir numero do usuario: ");
@@ -175,6 +169,7 @@ public class BibliotecaApp {
             System.out.println(utilizadores.get(i).getAge());
         }
     }
+
     public static void showAllUsersWithBook() {
         for (int i = 0; i < livros.size(); i++) {
             System.out.print(i + "-" + livros.get(i).getUserWithBook());
