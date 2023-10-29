@@ -1,35 +1,35 @@
 import java.util.*;
 import java.util.ArrayList;
 
-class Livro {
+class Book {
     static Scanner scnInput = new Scanner(System.in);
     static String userInput;
 
     static String name;
     static int stockAge;
-    private static String title;
-    private static int stock;
+    private  String title;
+    private  int stock;
     private ArrayList<String> userWithBook;
 
-    public Livro(String titulo, int estoque) {
-        this.title = titulo;
-        this.stock = estoque;
+    public Book(String title, int stock) {
+        this.title = title;
+        this.stock = stock;
         this.userWithBook = new ArrayList<>();
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public int getStock() {
-        return stock;
+        return this.stock;
     }
 
     public ArrayList<String> getuserWithBook() {
         return userWithBook;
     }
 
-    public void emprestarLivro(String usuario) {
+    public void loanBook(String usuario) {
         if (stock > 0) {
             userWithBook.add(usuario);
             stock--;
@@ -39,7 +39,7 @@ class Livro {
         }
     }
 
-    public void devolverLivro(String usuario) {
+    public void returnBook(String usuario) {
         if (userWithBook.contains(usuario)) {
             userWithBook.remove(usuario);
             stock++;
@@ -49,5 +49,3 @@ class Livro {
         }
     }
 }
-
-
