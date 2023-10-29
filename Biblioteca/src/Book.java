@@ -2,11 +2,6 @@ import java.util.*;
 import java.util.ArrayList;
 
 class Book {
-    static Scanner scnInput = new Scanner(System.in);
-    static String userInput;
-
-    static String name;
-    static int stockAge;
     private  String title;
     private  int stock;
     private ArrayList<String> userWithBook;
@@ -25,25 +20,25 @@ class Book {
         return this.stock;
     }
 
-    public ArrayList<String> getuserWithBook() {
-        return userWithBook;
+    public ArrayList<String> getUserWithBook() {
+        return this.userWithBook;
     }
 
-    public void loanBook(String usuario) {
+    public void loanBook(String user) {
         if (stock > 0) {
-            userWithBook.add(usuario);
+            userWithBook.add(user);
             stock--;
-            System.out.println("Livro " + title + " emprestado para " + usuario);
+            System.out.println("Livro " + title + " emprestado para " + user);
         } else {
             System.out.println("Estoque do livro " + title + " esgotado.");
         }
     }
 
-    public void returnBook(String usuario) {
-        if (userWithBook.contains(usuario)) {
-            userWithBook.remove(usuario);
+    public void returnBook(String user) {
+        if (userWithBook.contains(user)) {
+            userWithBook.remove(user);
             stock++;
-            System.out.println("Livro " + title + " devolvido por " + usuario);
+            System.out.println("Livro " + title + " devolvido por " + user);
         } else {
             System.out.println("Este usuário não requisitou o livro " + title);
         }

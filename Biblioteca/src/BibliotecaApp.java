@@ -6,22 +6,20 @@ public class BibliotecaApp {
     static Scanner scnInput = new Scanner(System.in);
     //------------------------------------------------------------------//
     static ArrayList<Book> livros = new ArrayList<>();
-    static ArrayList<User> usuarios = new ArrayList<>();
+    static ArrayList<User> utilizadores = new ArrayList<>();
 
     //------------------------------------------------------------------//
     public static void main(String[] args) {
         boolean menuLoop = false;
         //------------------------------------------------------------------//
         String userInput;
-        int choiceBook;
         //------------------------------------------------------------------//
-        int numUser;
         //Pre add
         livros.add(new Book("Os Lusiadas", 5));
         livros.add(new Book("Los Pollos Locos", 3));
-        //System.out.println(livros.get(0).getTitle());
-        usuarios.add(new User("Joao", 25));
-        usuarios.add(new User("Maria", 30));
+
+        utilizadores.add(new User("Joao", 25));
+        utilizadores.add(new User("Maria", 30));
         //------------------------------------------------------------------//
         while (!menuLoop) {
             showMenu();
@@ -58,7 +56,7 @@ public class BibliotecaApp {
                             showAllUsers();
                             break;
                         case "3":
-
+                        showAllUsersWithBook();
                             break;
                     }
                     break;
@@ -130,7 +128,7 @@ public class BibliotecaApp {
         System.out.print("->");
         int numUser = scnInput.nextInt();
 
-        selectBook.loanBook(usuarios.get(numUser).getName());
+        selectBook.loanBook(utilizadores.get(numUser).getName());
     }
     public static void returnBook(){
         System.out.println("Devolver Livros");
@@ -146,7 +144,7 @@ public class BibliotecaApp {
         Book selectBook = livros.get(choiceBook);
         System.out.println("+----------+");
 
-        selectBook.returnBook(usuarios.get(numUser).getName());
+        selectBook.returnBook(utilizadores.get(numUser).getName());
     }
 
     //------------------------------------------------------------------//
@@ -166,15 +164,20 @@ public class BibliotecaApp {
         String nameUser = scnInput.nextLine();
         System.out.print("Insira a idade do utilizador: ");
         int ageUser = scnInput.nextInt();
-        usuarios.add(new User(nameUser, ageUser));
-        System.out.print("Adicionado com sucesso: " + usuarios.get(usuarios.size() - 1).getName() + ", ");
-        System.out.println(usuarios.get(usuarios.size() - 1).getAge());
+        utilizadores.add(new User(nameUser, ageUser));
+        System.out.print("Adicionado com sucesso: " + utilizadores.get(utilizadores.size() - 1).getName() + ", ");
+        System.out.println(utilizadores.get(utilizadores.size() - 1).getAge());
     }
 
     public static void showAllUsers() {
-        for (int i = 0; i < usuarios.size(); i++) {
-            System.out.print(i + "-" + usuarios.get(i).getName() + ", ");
-            System.out.println(usuarios.get(i).getAge());
+        for (int i = 0; i < utilizadores.size(); i++) {
+            System.out.print(i + "-" + utilizadores.get(i).getName() + ", ");
+            System.out.println(utilizadores.get(i).getAge());
+        }
+    }
+    public static void showAllUsersWithBook() {
+        for (int i = 0; i < livros.size(); i++) {
+            System.out.print(i + "-" + livros.get(i).getUserWithBook());
         }
     }
 }

@@ -3,9 +3,9 @@ class User {
     private int age;
 
 
-    public User(String nome, int idade) {
-        this.name = nome;
-        this.age = idade;
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
     public String getName() {
