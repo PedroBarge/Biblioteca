@@ -18,6 +18,7 @@ public class BibliotecaApp {
         utilizadores.add(new User("Maria", 30));
         //------------------------------------------------------------------//
         while (!menuLoop) {
+            System.out.println("\nAPP NA VISTA DE ADM");
             showMenu();
             userInput = scnInput.next();
             switch (userInput) {

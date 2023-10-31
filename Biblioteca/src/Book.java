@@ -21,7 +21,7 @@ class Book {
 
     public ArrayList<String> getUserWithBook() {
         if (userWithBook != null) {
-            System.out.print(title+" ");
+            System.out.print(" "+title+" ");
         }
         return userWithBook;
     }
