@@ -1,16 +1,23 @@
-public class User {
-    String nameUser;
-    String ageUser;
-    String lastBook;
+class User {
+    private String name;
+    private int age;
+    private Book[] bookWithUser = new Book[5];
 
-    public User(String nameUser, String ageUser) {
-        this.nameUser = nameUser;
-        this.ageUser = ageUser;
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
-    public void UserWithBook(String nameUser, String ageUser , String lastBook){
-        this.nameUser = nameUser;
-        this.ageUser = ageUser;
-        this.lastBook = lastBook;
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Book[] getBookWithUser() {
+        return bookWithUser;
     }
 }
+
