@@ -89,8 +89,7 @@ public class BibliotecaApp {
         System.out.print("-> ");
     }
 
-    public static void addBookToArray() {
-        System.out.print("Insira o nome do livro: ");
+    public static void addBookToArray() {System.out.print("Insira o nome do livro: ");
         scnInput.nextLine();
         String bookName = scnInput.nextLine();
         System.out.print("Insira a quantidade em stock: ");

@@ -1,7 +1,7 @@
 class User {
     private String name;
     private int age;
-
+    private Book[] bookWithUser = new Book[5];
 
     public User(String name, int age) {
         this.name = name;
@@ -14,6 +14,10 @@ class User {
 
     public int getAge() {
         return age;
+    }
+
+    public Book[] getBookWithUser() {
+        return bookWithUser;
     }
 }
 

@@ -20,7 +20,10 @@ class Book {
     }
 
     public ArrayList<String> getUserWithBook() {
-        return this.userWithBook;
+        if (userWithBook != null) {
+            System.out.print(title+" ");
+        }
+        return userWithBook;
     }
 
     public void loanBook(String user) {
