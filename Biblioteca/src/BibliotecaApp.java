@@ -12,7 +12,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         boolean menuLoop = false;
         //------------------------------------------------------------------//
-        String userInput;
+        String userInput = null;
         //------------------------------------------------------------------//
         livros.add(new Book("Os Lusiadas", 5));
         livros.add(new Book("Los Pollos Locos", 3));
@@ -21,8 +21,14 @@ public class BibliotecaApp {
         //------------------------------------------------------------------//
         while (!menuLoop) {
             System.out.println("\nAPP NA VISTA DE ADM");
-            showMenu();
-            userInput = scnInput.next();
+            try {
+                showMenu();
+                userInput = scnInput.next();
+            } catch (Exception e) {
+                System.out.println("Ocorreu um erro...");
+                System.out.println("A voltar ao menu principal...");
+                showMenu();
+            }
             switch (userInput) {
                 case "1":
                     cleanConsole();
