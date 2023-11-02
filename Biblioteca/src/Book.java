@@ -20,17 +20,17 @@ class Book {
         return this.stock;
     }
 
-    public void decreaseStock() {
-        if (stock > 0) {
-            stock--;
-        }else {
-            System.out.println("Stock insuficiente");
-        }
-    }
+   // public void decreaseStock() {
+   //     if (stock > 0) {
+   //         stock--;
+    //    }else {
+   //         System.out.println("Stock insuficiente");
+   //     }
+   // }
 
-    public void increaseStock() {
-        stock++;
-    }
+   // public void increaseStock() {
+   //     stock++;
+   // }
 
     public ArrayList<String> getUserWithBook() {
         if (userWithBook != null) {

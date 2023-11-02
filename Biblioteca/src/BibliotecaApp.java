@@ -13,7 +13,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         int menuLoop = 1;
         //------------------------------------------------------------------//
-        int userInput = 0;
+        int userInput;
         //------------------------------------------------------------------//
         livros.add(new Book("Os Lusiadas", 5));
         livros.add(new Book("Los Pollos Locos", 3));
@@ -195,17 +195,22 @@ public class BibliotecaApp {
             System.out.println("Emprestar Livros");
             showBooksArray();
             int choiceBook;
-            Book selectBook = null;
+            Book selectBook;
+
             System.out.println("Inserir numero do livro: ");
             System.out.print("->");
             choiceBook = scnInput.nextInt();
             selectBook = livros.get(choiceBook);
+
             System.out.println("+----------+");
+
             showAllUsers();
             System.out.println("Inserir ID do utilizador: ");
             System.out.print("->");
             int numUser = scnInput.nextInt();
+
             selectBook.loanBook(utilizadores.get(numUser).getName());
+
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
@@ -216,8 +221,9 @@ public class BibliotecaApp {
     public static void returnBook() {
         try {
             System.out.println("Devolver Livros");
+            showAllUsersWithBook();
             showAllUsers();
-            System.out.println("Inserir ID do utilizador: ");
+            System.out.println("\nInserir ID do utilizador: ");
             System.out.print("->");
             int numUser = scnInput.nextInt();
             System.out.println("+----------+");
@@ -307,7 +313,7 @@ public class BibliotecaApp {
     }
 
     public static void showAllUsers() {
-        System.out.println("Consultar todos os clientes");
+        System.out.println("\nConsultar todos os clientes");
         for (int i = 0; i < utilizadores.size(); i++) {
             System.out.print("ID:" + i + "\nNome: " + utilizadores.get(i).getName() + "\nIdade: ");
             System.out.println(utilizadores.get(i).getAge());
@@ -317,7 +323,7 @@ public class BibliotecaApp {
     public static void showAllUsersWithBook() {
         System.out.println("Todos os livros que foram emprestados aos clientes");
         for (int i = 0; i < livros.size(); i++) {
-            System.out.print(i + "-" + livros.get(i).getUserWithBook());
+            System.out.print(livros.get(i).getUserWithBook());
         }
     }
 }
