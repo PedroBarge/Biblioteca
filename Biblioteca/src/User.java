@@ -1,23 +1,34 @@
-class User {
-    private String name;
-    private int age;
-    private Book[] bookWithUser = new Book[5];
+import java.util.ArrayList;
+
+public class User {
+    public String name;
+    public int age;
+    private ArrayList<Book> borrowedBooks;
 
     public User(String name, int age) {
         this.name = name;
-        this.age = age;
+        this.age =age;
+        this.borrowedBooks = new ArrayList<>();
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
-
     public int getAge() {
-        return age;
+        return this.age;
     }
 
-    public Book[] getBookWithUser() {
-        return bookWithUser;
+   /* public void borrowBook(Book book) {
+        borrowedBooks.add(book);
     }
+
+    public void returnBook(Book book) {
+        borrowedBooks.remove(book);
+    }
+
+    public boolean hasBorrowedBook(Book book) {
+        return borrowedBooks.contains(book);
+    }*/
+
+
 }
-
