@@ -16,8 +16,8 @@ public class BibliotecaApp {
         int userInput;
         //------------------------------------------------------------------//
         livros.add(new Book("Os Lusiadas", 5));
-        livros.add(new Book("Los Pollos Locos", 3));
-        utilizadores.add(new User("João Silva", 25));
+        livros.add(new Book("Harry Potter", 3));
+        utilizadores.add(new User("Pedro Barge", 21));
         utilizadores.add(new User("Maria Paula", 30));
         //------------------------------------------------------------------//
         while (menuLoop != 0) {
