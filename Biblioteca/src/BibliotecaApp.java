@@ -235,6 +235,7 @@ public class BibliotecaApp {
             System.out.println("+----------+");
 
             selectBook.returnBook(utilizadores.get(numUser).getName());
+
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
