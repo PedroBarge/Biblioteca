@@ -11,6 +11,7 @@ class Book {
         this.userWithBook = new ArrayList<>();
     }
 
+
     public String getTitle() {
         return this.title;
     }
@@ -18,6 +19,18 @@ class Book {
     public int getStock() {
         return this.stock;
     }
+
+   // public void decreaseStock() {
+   //     if (stock > 0) {
+   //         stock--;
+    //    }else {
+   //         System.out.println("Stock insuficiente");
+   //     }
+   // }
+
+   // public void increaseStock() {
+   //     stock++;
+   // }
 
     public ArrayList<String> getUserWithBook() {
         if (userWithBook != null) {

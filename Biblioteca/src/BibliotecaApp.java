@@ -7,100 +7,101 @@ public class BibliotecaApp {
     //------------------------------------------------------------------//
     static ArrayList<Book> livros = new ArrayList<>();
     static ArrayList<User> utilizadores = new ArrayList<>();
+    //static Library library = new Library();
 
     //------------------------------------------------------------------//
     public static void main(String[] args) {
-        boolean menuLoop = false;
+        int menuLoop = 1;
         //------------------------------------------------------------------//
-        String userInput = null;
+        int userInput;
         //------------------------------------------------------------------//
         livros.add(new Book("Os Lusiadas", 5));
         livros.add(new Book("Los Pollos Locos", 3));
-        utilizadores.add(new User("Joao", 25));
-        utilizadores.add(new User("Maria", 30));
+        utilizadores.add(new User("João Silva", 25));
+        utilizadores.add(new User("Maria Paula", 30));
         //------------------------------------------------------------------//
-        while (!menuLoop) {
+        while (menuLoop != 0) {
             System.out.println("\nAPP NA VISTA DE ADM");
             try {
                 showMenu();
-                userInput = scnInput.next();
+                userInput = scnInput.nextInt();
+                switch (userInput) {
+                    case 1:
+                        cleanConsole();
+                        showMenuBook();
+                        userInput = scnInput.nextInt();
+                        switch (userInput) {
+                            case 1:
+                                cleanConsole();
+                                addBookToArray();
+                                break;
+                            case 2:
+                                cleanConsole();
+                                removeBookFromArray();
+                                break;
+                            case 3:
+                                cleanConsole();
+                                loanBook();
+                                break;
+                            case 4:
+                                cleanConsole();
+                                returnBook();
+                                break;
+                            case 5:
+                                cleanConsole();
+                                showBooksArray();
+                                break;
+                        }
+                        break;
+                    case 2:
+                        cleanConsole();
+                        showMenuUsers();
+                        userInput = scnInput.nextInt();
+                        switch (userInput) {
+                            case 1:
+                                cleanConsole();
+                                addUserToArray();
+                                break;
+                            case 2:
+                                cleanConsole();
+                                removeUserFromArray();
+                                break;
+                            case 3:
+                                cleanConsole();
+                                showAllUsers();
+                                break;
+                            case 4:
+                                cleanConsole();
+                                showAllUsersWithBook();
+                                break;
+                        }
+                        break;
+                    case 0:
+                        menuLoop = 0;
+                        System.out.println("A fechar ...");
+                        cleanConsole();
+                        break;
+                    default:
+                        cleanConsole();
+                        break;
+                }
             } catch (Exception e) {
+                cleanConsole();
+                scnInput.next();
                 System.out.println("Ocorreu um erro...");
                 System.out.println("A voltar ao menu principal...");
-                showMenu();
-            }
-            switch (userInput) {
-                case "1":
-                    cleanConsole();
-                    showMenuBook();
-                    userInput = scnInput.next();
-                    switch (userInput) {
-                        case "1":
-                            cleanConsole();
-                            addBookToArray();
-                            break;
-                        case "2":
-                            cleanConsole();
-                            removeBookFromArray();
-                            break;
-                        case "3":
-                            cleanConsole();
-                            loanBook();
-                            break;
-                        case "4":
-                            cleanConsole();
-                            returnBook();
-                            break;
-                        case "5":
-                            cleanConsole();
-                            showBooksArray();
-                            break;
-                    }
-                    break;
-                case "2":
-                    cleanConsole();
-                    showMenuUsers();
-                    userInput = scnInput.next();
-                    switch (userInput) {
-                        case "1":
-                            cleanConsole();
-                            addUserToArray();
-                            break;
-                        case "2":
-                            cleanConsole();
-                            removeUserFromArray();
-                            break;
-                        case "3":
-                            cleanConsole();
-                            showAllUsers();
-                            break;
-                        case "4":
-                            cleanConsole();
-                            showAllUsersWithBook();
-                            break;
-                    }
-                    break;
-                default:
-                    cleanConsole();
-                    if (userInput.equals("0")) {
-                        System.out.println("A fechar ...");
-                    }
-                    menuLoop = true;
-                    break;
-
             }
         }
     }
 
     //------------------------------------------------------------------//
     public static void cleanConsole() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 30; i++) {
             System.out.println();
         }
     }
 
     public static void showMenu() {
-
         System.out.println("\n  Biblioteca");
         System.out.println("    Menu");
         System.out.println("+----------+");
@@ -109,7 +110,6 @@ public class BibliotecaApp {
         System.out.println("0- Sair");
         System.out.println("+----------+");
         System.out.print("-> ");
-
     }
 
     //------------------------------------------------------------------//
@@ -127,6 +127,7 @@ public class BibliotecaApp {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
+            showMenu();
         }
     }
 
@@ -152,6 +153,7 @@ public class BibliotecaApp {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
+            showMenu();
         }
     }
 
@@ -176,13 +178,14 @@ public class BibliotecaApp {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
+            showMenu();
         }
     }
 
     public static void showBooksArray() {
         System.out.println("Consultar todos os livros da Biblioteca");
         for (int i = 0; i < livros.size(); i++) {
-            System.out.print("ID: " + i + "-" + livros.get(i).getTitle() + ", ");
+            System.out.print("ID:" + i + " \n" + livros.get(i).getTitle() + " -Stock:");
             System.out.println(livros.get(i).getStock());
         }
     }
@@ -192,18 +195,22 @@ public class BibliotecaApp {
             System.out.println("Emprestar Livros");
             showBooksArray();
             int choiceBook;
-            Book selectBook = null;
+            Book selectBook;
+
             System.out.println("Inserir numero do livro: ");
             System.out.print("->");
             choiceBook = scnInput.nextInt();
             selectBook = livros.get(choiceBook);
+
             System.out.println("+----------+");
+
             showAllUsers();
-            System.out.println("Inserir numero do usuario: ");
+            System.out.println("Inserir ID do utilizador: ");
             System.out.print("->");
             int numUser = scnInput.nextInt();
 
             selectBook.loanBook(utilizadores.get(numUser).getName());
+
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
@@ -213,10 +220,10 @@ public class BibliotecaApp {
 
     public static void returnBook() {
         try {
-
             System.out.println("Devolver Livros");
+            showAllUsersWithBook();
             showAllUsers();
-            System.out.println("Inserir numero do usuario: ");
+            System.out.println("\nInserir ID do utilizador: ");
             System.out.print("->");
             int numUser = scnInput.nextInt();
             System.out.println("+----------+");
@@ -228,11 +235,13 @@ public class BibliotecaApp {
             System.out.println("+----------+");
 
             selectBook.returnBook(utilizadores.get(numUser).getName());
+
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
         }
     }
+
 
     //------------------------------------------------------------------//
     public static void showMenuUsers() {
@@ -248,6 +257,7 @@ public class BibliotecaApp {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
+            showMenu();
         }
     }
 
@@ -274,6 +284,7 @@ public class BibliotecaApp {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
+            showMenu();
         }
     }
 
@@ -298,13 +309,14 @@ public class BibliotecaApp {
         } catch (Exception e) {
             System.out.println("Ocorreu um erro...");
             System.out.println("A voltar ao menu principal...");
+            showMenu();
         }
     }
 
     public static void showAllUsers() {
-        System.out.println("Consultar todos os clientes");
+        System.out.println("\nConsultar todos os clientes");
         for (int i = 0; i < utilizadores.size(); i++) {
-            System.out.print("ID: " + i + " Nome: " + utilizadores.get(i).getName() + ", ");
+            System.out.print("ID:" + i + "\nNome: " + utilizadores.get(i).getName() + "\nIdade: ");
             System.out.println(utilizadores.get(i).getAge());
         }
     }
@@ -312,7 +324,7 @@ public class BibliotecaApp {
     public static void showAllUsersWithBook() {
         System.out.println("Todos os livros que foram emprestados aos clientes");
         for (int i = 0; i < livros.size(); i++) {
-            System.out.print(i + "-" + livros.get(i).getUserWithBook());
+            System.out.print(livros.get(i).getUserWithBook());
         }
     }
 }
