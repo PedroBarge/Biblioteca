@@ -21,6 +21,7 @@ public class BibliotecaApp {
         utilizadores.add(new User("Maria Paula", 30));
         //------------------------------------------------------------------//
         while (menuLoop != 0) {
+            System.out.println("Hello");
             System.out.println("\nAPP NA VISTA DE ADM");
             try {
                 showMenu();
